@@ -13,31 +13,31 @@
 #include "ft_printf.h"
 
 
-static int	ft_format(char c, va_list ap)
+static int	ft_format(char c, va_list *ap)
 {
     int	count;
 
     count = 0;
     if (c == 'c')
-    	count += ft_print_char(va_arg(ap, int));
+    	count += ft_print_char(va_arg(*ap, int));
     else if(c == 's')
-    	count += ft_print_str(va_arg(ap, char *));
+    	count += ft_print_str(va_arg(*ap, char *));
     // else if(c == 'p')
-    // 	count += ft_print_char(va_arg(ap, int));
+    // 	count += ft_print_char(va_arg(*ap, int));
     else if(c == 'd')
-    	count += ft_print_digit((long)(va_arg(ap, int)) , 10, c);
+    	count += ft_print_digit((long)(va_arg(*ap, int)) , 10, c);
     else if(c == 'i')
-    	count += ft_print_int(va_arg(ap, int));
+    	count += ft_print_int(va_arg(*ap, int));
     else if(c == 'u')
-    	count += ft_print_unsigned(va_arg(ap,unsigned int));
+    	count += ft_print_unsigned(va_arg(*ap,unsigned int));
     else if(c == 'x')
-    	count += ft_print_digit((long)(va_arg(ap, unsigned int)) , 16, c);
+    	count += ft_print_digit((long)(va_arg(*ap, unsigned int)) , 16, c);
     else if(c == 'X')
-    	count += ft_print_digit((long)(va_arg(ap ,unsigned int)) , 16, c);
+    	count += ft_print_digit((long)(va_arg(*ap ,unsigned int)) , 16, c);
     else if(c == '%')
     	count += ft_print_char('%');
-    else
-        count += ft_print_char(c);
+    // else
+    //     count += ft_print_char(c);
     return (count);
 }
 
@@ -52,8 +52,10 @@ int	ft_printf(const char * str, ...)
 	len = 0;
 	while (*str)
 	{
-		if(*str == '%')
-			len += ft_format(*(++str), ap);
+        if (*str == '%' && !*(str + 1))
+            break ;
+		if(*str == '%' && *(str + 1))
+			len += ft_format(*(++str), &ap);
 		else
 			len += ft_print_char(*str);
         str++;  
@@ -61,3 +63,11 @@ int	ft_printf(const char * str, ...)
     va_end(ap);
     return (len);
 }
+
+// int main()
+// {
+//     char *s = NULL;
+//     int count = printf("%s", s);
+//     printf("\n%d", count);
+//     return (0);
+// }
