@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 12:11:12 by mez-zahi          #+#    #+#             */
-/*   Updated: 2024/11/27 17:21:17 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:26:52 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ static int	ft_format(char c, va_list ap)
     // 	count += ft_print_char(va_arg(ap, int));
     else if(c == 'd')
     	count += ft_print_digit((long)(va_arg(ap, int)) , 10, c);
-    // else if(c == 'i')
-    // 	count += ft_print_char(va_arg(ap, int));
-    // else if(c == 'u')
-    // 	count += ft_print_char(va_arg(ap, int));
+    else if(c == 'i')
+    	count += ft_print_int(va_arg(ap, int));
+    else if(c == 'u')
+    	count += ft_print_unsigned(va_arg(ap,unsigned int));
     else if(c == 'x')
     	count += ft_print_digit((long)(va_arg(ap, unsigned int)) , 16, c);
     else if(c == 'X')
