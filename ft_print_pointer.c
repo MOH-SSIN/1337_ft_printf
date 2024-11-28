@@ -22,5 +22,5 @@ int	ft_print_pointer(void *ptr)
 	ft_print_str("0x");
 	if (!ptr)
 		return (ft_print_char('0') + 2);
-	return (2 + ft_print_aid((unsigned long)ptr));
+	return (ft_print_aid((unsigned long)ptr) + 2);
 }
