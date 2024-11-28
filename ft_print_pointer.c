@@ -1,26 +1,26 @@
 #include "ft_printf.h"
 
-static int	printadress(const unsigned long nbr)
+static int	ft_print_aid(const unsigned long nbr)
 {
-    int len;
+	int	len;
 
-    len = 0;
+	len = 0;
 	if (nbr >= 16)
-    {
-        len += printadress(nbr / 16);
-        len +=  printadress(nbr % 16);
-    }
+	{
+		len += ft_print_aid(nbr / 16);
+		len += ft_print_aid(nbr % 16);
+	}
 	else if (nbr / 10 == 0)
 		len += ft_print_char(nbr + '0');
 	else
-		len += ft_print_char((char) nbr - 10 + 'a');
+		len += ft_print_char((char)nbr - 10 + 'a');
 	return (len);
 }
 
-int	ft_print_pointer(void *adress)
+int	ft_print_pointer(void *ptr)
 {
 	ft_print_str("0x");
-	if (!adress)
-		return (ft_print_char(48));
-	return (2 + printadress((unsigned long) adress));
+	if (!ptr)
+		return (ft_print_char('0') + 2);
+	return (2 + ft_print_aid((unsigned long)ptr));
 }
