@@ -22,8 +22,8 @@ static int	ft_format(char c, va_list *ap)
     	count += ft_print_char(va_arg(*ap, int));
     else if(c == 's')
     	count += ft_print_str(va_arg(*ap, char *));
-    // else if(c == 'p')
-    // 	count += ft_print_char(va_arg(*ap, int));
+    else if(c == 'p')
+    	count += ft_print_pointer(va_arg(*ap, void *));
     else if(c == 'd')
     	count += ft_print_digit((long)(va_arg(*ap, int)) , 10, c);
     else if(c == 'i')
@@ -36,8 +36,6 @@ static int	ft_format(char c, va_list *ap)
     	count += ft_print_digit((long)(va_arg(*ap ,unsigned int)) , 16, c);
     else if(c == '%')
     	count += ft_print_char('%');
-    // else
-    //     count += ft_print_char(c);
     return (count);
 }
 
@@ -46,8 +44,6 @@ int	ft_printf(const char * str, ...)
     int     len;
 	va_list	ap;
 
-	// if (!str)
-	// 	return (write(1,"(null)",6));
     va_start(ap, str);
 	len = 0;
 	while (*str)
@@ -63,11 +59,3 @@ int	ft_printf(const char * str, ...)
     va_end(ap);
     return (len);
 }
-
-// int main()
-// {
-//     char *s = NULL;
-//     int count = printf("%s", s);
-//     printf("\n%d", count);
-//     return (0);
-// }

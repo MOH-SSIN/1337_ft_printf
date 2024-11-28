@@ -24,5 +24,6 @@ int	ft_print_char(char c);
 int ft_print_digit(long nbr, int base, char c);
 int ft_print_int(int nbr);
 int ft_print_unsigned(unsigned int nbr);
+int ft_print_pointer(void *ptr);
 
 #endif

@@ -15,7 +15,8 @@ NAME = libftprintf.a
 
 SRC_FILE = ft_print_char.c ft_print_str.c \
 			ft_printf.c ft_print_digit.c ft_print_int.c\
-				ft_print_unsigned.c
+			ft_print_unsigned.c ft_print_pointer.c
+
 OBJS = $(SRC_FILE:.c=.o)
 HEADER = ft_print.h
 LIBC = ar rcs
