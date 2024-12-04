@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 12:11:12 by mez-zahi          #+#    #+#             */
-/*   Updated: 2024/12/04 13:36:36 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:06:04 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_format(char c, va_list *ap)
 	else if (c == '%')
 		count += ft_print_char('%');
 	else
-		count += ft_print_char(c);	
+		count += ft_print_char(c);
 	return (count);
 }
 
@@ -45,6 +45,8 @@ int	ft_printf(const char *str, ...)
 	int		len;
 	va_list	ap;
 
+	if (write(1, "", 0) == -1)
+		return (-1);
 	va_start(ap, str);
 	len = 0;
 	while (*str)

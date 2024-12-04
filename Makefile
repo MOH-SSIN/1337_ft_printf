@@ -6,12 +6,11 @@
 #    By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 12:11:26 by mez-zahi          #+#    #+#              #
-#    Updated: 2024/11/27 17:27:20 by mez-zahi         ###   ########.fr        #
+#    Updated: 2024/12/04 13:40:22 by mez-zahi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-
 
 SRC_FILE = ft_print_char.c ft_print_str.c \
 			ft_printf.c ft_print_digit.c ft_print_int.c\
